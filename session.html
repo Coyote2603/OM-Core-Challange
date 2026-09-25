@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#173f5f" />
+  <meta name="description" content="A guided tutorial session with concepts, diagrams, resources, practice problems, and interactive teaching slides." />
+  <title>Session | Interactive Teaching Platform</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="vendor/katex/katex.min.css" />
+  <script defer src="vendor/katex/katex.min.js"></script>
+  <script defer src="vendor/katex/auto-render.min.js"></script>
+</head>
+<body class="site-page session-page">
+  <a class="skip-link" href="#session-content">Skip to main content</a>
+
+  <nav class="navbar" aria-label="Primary navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand" data-config="shortTitle">Teaching Platform</a>
+      <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Open navigation" aria-controls="nav-links" aria-expanded="false">
+        <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+      </button>
+      <ul class="nav-links" id="nav-links"></ul>
+    </div>
+  </nav>
+
+  <header class="session-hero">
+    <div class="container session-hero-inner">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a><span aria-hidden="true">/</span><span id="breadcrumb-session">Session</span></nav>
+      <div class="session-number" id="session-number" aria-hidden="true">01</div>
+      <span class="eyebrow light" id="session-kicker">Guided session</span>
+      <h1 id="session-title">Session</h1>
+      <p id="session-subtitle"></p>
+      <ul class="objective-list" id="session-objectives" aria-label="Learning objectives"></ul>
+    </div>
+  </header>
+
+  <main class="session-content" id="session-content" tabindex="-1"></main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <a href="index.html" class="footer-brand" data-config="shortTitle">Teaching Platform</a>
+      <p data-config="footerText">Built for students and shared for adaptation.</p>
+    </div>
+  </footer>
+
+  <script src="js/site-config.js"></script>
+  <script src="js/content.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

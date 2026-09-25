@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A fully synthetic, printable decision worksheet for the Interactive Teaching Platform." />
+  <title>Sample Worksheet | Interactive Teaching Platform</title>
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+  <style>
+    :root { --ink:#173f5f; --accent:#e05a47; --accent-text:#b43e30; --muted:#60727b; --line:#d9e3e6; --wash:#f3f7f8; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--wash); color:#152b3a; font-family:Inter,"Avenir Next","Segoe UI",sans-serif; line-height:1.45; }
+    .toolbar { position:sticky; top:0; z-index:2; padding:.7rem 1rem; border-bottom:1px solid var(--line); background:rgba(255,255,255,.95); display:flex; align-items:center; justify-content:space-between; gap:1rem; backdrop-filter:blur(10px); }
+    .toolbar a { color:var(--ink); font-size:.78rem; font-weight:750; text-decoration:none; }
+    button { padding:.55rem .8rem; border:0; border-radius:7px; background:var(--ink); color:white; font:inherit; font-size:.72rem; font-weight:750; cursor:pointer; }
+    button:focus-visible,.toolbar a:focus-visible { outline:3px solid var(--accent-text); outline-offset:3px; }
+    main { width:min(calc(100% - 2rem),900px); margin:2rem auto; padding:clamp(1.25rem,4vw,2.5rem); border:1px solid var(--line); border-radius:16px; background:white; box-shadow:0 18px 55px rgba(21,43,58,.1); }
+    header { padding-bottom:1.2rem; border-bottom:3px solid var(--ink); display:flex; align-items:flex-end; justify-content:space-between; gap:2rem; }
+    .sample-label { color:var(--accent-text); font-size:.64rem; font-weight:850; letter-spacing:.1em; text-transform:uppercase; }
+    h1 { margin:.35rem 0 0; color:var(--ink); font-size:clamp(1.8rem,5vw,2.8rem); letter-spacing:-.05em; line-height:1; }
+    header p { max-width:330px; margin:0; color:var(--muted); font-size:.7rem; text-align:right; }
+    section { margin-top:1.3rem; }
+    h2 { margin:0 0 .65rem; color:var(--ink); font-size:.88rem; letter-spacing:.01em; }
+    .step { width:25px; height:25px; margin-right:.35rem; border-radius:7px; background:var(--accent-text); color:white; display:inline-flex; align-items:center; justify-content:center; font-size:.65rem; vertical-align:middle; }
+    .grid { display:grid; grid-template-columns:repeat(2,1fr); gap:.7rem; }
+    .grid.three { grid-template-columns:repeat(3,1fr); }
+    label { color:var(--muted); display:block; font-size:.64rem; font-weight:780; letter-spacing:.04em; text-transform:uppercase; }
+    input,textarea { width:100%; margin-top:.3rem; padding:.65rem; border:1px solid var(--line); border-radius:7px; background:#fbfcfc; color:#152b3a; font:inherit; font-size:.76rem; resize:vertical; }
+    input { min-height:40px; }
+    textarea { min-height:72px; }
+    input:focus,textarea:focus { border-color:var(--accent-text); outline:3px solid var(--accent-text); outline-offset:2px; }
+    .evidence-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:.55rem; }
+    .evidence-grid article { padding:.7rem; border:1px solid var(--line); border-radius:8px; background:#fbfcfc; }
+    .evidence-grid textarea { min-height:82px; background:white; }
+    .rule { padding:.85rem; border-left:4px solid var(--accent); border-radius:4px 9px 9px 4px; background:#fff2ee; }
+    .rule label { color:#81493f; }
+    .revision { padding:.85rem; border:1px solid #b8ddd6; border-radius:10px; background:#eef9f7; }
+    .revision h2 { color:#087f73; }
+    .checklist { display:grid; grid-template-columns:repeat(2,1fr); gap:.45rem; }
+    .checklist label { padding:.5rem .65rem; border:1px solid var(--line); border-radius:7px; color:#344b55; display:flex; align-items:flex-start; gap:.45rem; font-size:.67rem; font-weight:650; letter-spacing:0; text-transform:none; }
+    .checklist input { width:auto; min-height:0; margin:.15rem 0 0; padding:0; }
+    footer { margin-top:1.5rem; padding-top:.8rem; border-top:1px solid var(--line); color:var(--muted); font-size:.62rem; display:flex; justify-content:space-between; }
+    @media (max-width:650px) { header { align-items:flex-start; flex-direction:column; gap:.7rem; } header p { text-align:left; } .grid,.grid.three,.evidence-grid,.checklist { grid-template-columns:1fr; } }
+    @media print { @page { margin:.35in; } body { background:white; } .toolbar { display:none; } main { width:100%; margin:0; padding:0; border:0; box-shadow:none; } input,textarea { border-color:#aebdc2; background:white; } textarea { min-height:58px; } section { margin-top:.9rem; } }
+  </style>
+</head>
+<body>
+  <div class="toolbar"><a href="../../index.html">← Return to the platform</a><button type="button" id="print-page">Print worksheet</button></div>
+  <main>
+    <header>
+      <div><span class="sample-label">Included example · safe to replace</span><h1>Decision worksheet</h1></div>
+      <p>Type into the fields or print a blank copy. All prompts are original synthetic starter content.</p>
+    </header>
+
+    <section aria-labelledby="frame-heading">
+      <h2 id="frame-heading"><span class="step">1</span>Frame the choice</h2>
+      <div class="grid three">
+        <label>Choice<input type="text" aria-label="Choice" placeholder="What must be decided?" /></label>
+        <label>Decision owner<input type="text" aria-label="Decision owner" placeholder="Who will decide?" /></label>
+        <label>Time horizon<input type="text" aria-label="Time horizon" placeholder="By when or for how long?" /></label>
+      </div>
+      <label style="margin-top:.7rem">Intended outcome<textarea aria-label="Intended outcome" placeholder="What outcome should the decision support?"></textarea></label>
+    </section>
+
+    <section aria-labelledby="inputs-heading">
+      <h2 id="inputs-heading"><span class="step">2</span>Separate the inputs</h2>
+      <div class="evidence-grid">
+        <article><label>Evidence<textarea aria-label="Evidence" placeholder="What observations could update the judgment?"></textarea></label></article>
+        <article><label>Constraints<textarea aria-label="Constraints" placeholder="What cannot be changed in this decision?"></textarea></label></article>
+        <article><label>Preferences<textarea aria-label="Preferences" placeholder="Which priorities require explicit judgment?"></textarea></label></article>
+      </div>
+    </section>
+
+    <section class="rule" aria-labelledby="rule-heading">
+      <h2 id="rule-heading"><span class="step">3</span>State a provisional rule</h2>
+      <label>If … then … because …<textarea aria-label="Provisional decision rule" placeholder="Connect a meaningful condition to an action and explain why."></textarea></label>
+    </section>
+
+    <section aria-labelledby="commit-heading">
+      <h2 id="commit-heading"><span class="step">4</span>Commit and test</h2>
+      <div class="grid">
+        <label>Initial choice<textarea aria-label="Initial choice" placeholder="What would you choose now, and why?"></textarea></label>
+        <label>Pivotal assumption<textarea aria-label="Pivotal assumption" placeholder="What could realistically reverse the choice?"></textarea></label>
+      </div>
+    </section>
+
+    <section class="revision" aria-labelledby="revision-heading">
+      <h2 id="revision-heading"><span class="step">5</span>Record the revision</h2>
+      <div class="grid">
+        <label>New signal<textarea aria-label="New signal" placeholder="What new evidence or challenge arrived?"></textarea></label>
+        <label>Updated choice<textarea aria-label="Updated choice" placeholder="What changed in the reasoning? What stayed the same?"></textarea></label>
+      </div>
+    </section>
+
+    <section aria-labelledby="check-heading">
+      <h2 id="check-heading"><span class="step">✓</span>Quality check</h2>
+      <div class="checklist">
+        <label><input type="checkbox" />The choice and intended outcome are explicit.</label>
+        <label><input type="checkbox" />Evidence is separate from constraints and preferences.</label>
+        <label><input type="checkbox" />The rule connects an observable condition to an action.</label>
+        <label><input type="checkbox" />The revision identifies what new information changed.</label>
+      </div>
+    </section>
+
+    <footer><span>Sample Worksheet · Interactive Teaching Platform</span><span>Original synthetic content for adaptation</span></footer>
+  </main>
+  <script>document.getElementById("print-page").addEventListener("click", () => window.print());</script>
+</body>
+</html>

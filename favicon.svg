@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Interactive Teaching Platform">
+  <rect width="64" height="64" rx="15" fill="#173f5f"/>
+  <path d="M15 17h23c6 0 11 5 11 11v21H26c-6 0-11-5-11-11V17Z" fill="#fff" opacity=".96"/>
+  <path d="M25 17h13c6 0 11 5 11 11v21H36c-6 0-11-5-11-11V17Z" fill="#e05a47"/>
+  <path d="M25 24h12M25 31h15M25 38h10" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".9"/>
+</svg>

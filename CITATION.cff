@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "If you use or adapt this platform, please cite the software and preserve the applicable license notices."
+title: "Interactive Teaching Platform"
+type: software
+version: 1.0.0
+date-released: 2026-08-04
+repository-code: "https://github.com/StefanosPoulidis/course-tutorial-platform"
+url: "https://stefanospoulidis.github.io/course-tutorial-platform/"
+authors:
+  - family-names: "Poulidis"
+    given-names: "Stefanos"
+abstract: >-
+  A reusable, zero-build static example for guided teaching materials,
+  interactive slides, worked practice, and a public Newsvendor game.
+keywords:
+  - teaching
+  - tutorial platform
+  - active learning
+  - newsvendor
+  - static website
+license: MIT

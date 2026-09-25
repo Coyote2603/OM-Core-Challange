@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#173f5f" />
+  <meta name="description" content="Six worked multiple-choice problems on capacity, batching, queueing, and process analysis, with a targeted hint for every wrong answer." />
+  <title>The OM Core Challenge | Interactive Teaching Platform</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/om-challenge.css" />
+  <link rel="stylesheet" href="vendor/katex/katex.min.css" />
+  <script defer src="vendor/katex/katex.min.js"></script>
+  <script defer src="vendor/katex/auto-render.min.js"></script>
+</head>
+<body class="game-page" data-access="public">
+
+  <div id="app-content">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <nav class="navbar" aria-label="Primary">
+      <div class="nav-inner">
+        <a href="index.html" class="nav-brand" data-config="shortTitle">Teaching Platform</a>
+        <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-controls="nav-links" aria-expanded="false">&#9776;</button>
+        <ul class="nav-links" id="nav-links"></ul>
+      </div>
+    </nav>
+
+    <header class="om-hero">
+      <div class="om-hero-inner">
+        <div>
+          <div class="breadcrumb"><a href="index.html">Home</a> &rsaquo; Interactive activity</div>
+          <span class="game-kicker">Capacity, batching, queueing, process analysis</span>
+          <h1>The OM Core Challenge</h1>
+          <p>Six worked problems on process capacity and flow. Pick an answer — if it's wrong, you get a hint aimed at exactly that mistake, and you can try again. Get it right and the full worked solution unlocks.</p>
+        </div>
+        <div class="om-hero-badge" aria-hidden="true">
+          <span>Q</span>
+          <strong>1&ndash;6</strong>
+        </div>
+      </div>
+    </header>
+
+    <main class="om-container container" id="main-content" tabindex="-1">
+      <div id="om-live" class="sr-only" aria-live="polite"></div>
+
+      <div class="om-progress-row">
+        <div class="om-progress-track" id="om-progress-track"></div>
+        <span class="om-progress-label" id="om-progress-label">Question 1 of 6</span>
+      </div>
+
+      <section class="om-question-card" id="om-question-panel" aria-live="polite"></section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        <a href="index.html" class="footer-brand" data-config="shortTitle">Teaching Platform</a>
+        <p data-config="footerText">Built for students and shared for adaptation.</p>
+      </div>
+    </footer>
+  </div>
+
+  <script src="js/site-config.js"></script>
+  <script src="js/content.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/om-challenge.js"></script>
+</body>
+</html>

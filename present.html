@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#101c2b" />
+  <meta name="description" content="Interactive, keyboard-friendly presenter mode for a teaching session." />
+  <title>Presenter | Interactive Teaching Platform</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/presenter.css" />
+  <link rel="stylesheet" href="vendor/katex/katex.min.css" />
+  <script defer src="vendor/katex/katex.min.js"></script>
+  <script defer src="vendor/katex/auto-render.min.js"></script>
+</head>
+<body class="presenter-page">
+  <main class="presenter" id="presenter">
+    <div class="presenter-toolbar">
+      <a href="index.html" id="exit-btn" class="presenter-btn" aria-label="Exit presentation and return to the homepage"><span aria-hidden="true">←</span> Exit</a>
+      <button type="button" id="slide-counter" class="slide-counter" aria-haspopup="dialog" aria-expanded="false" aria-label="Slide 1 of 1. Open slide navigator">1 / 1</button>
+      <div class="presenter-actions">
+        <button type="button" id="help-btn" class="presenter-btn" aria-haspopup="dialog" aria-expanded="false">Help</button>
+        <button type="button" id="fullscreen-btn" class="presenter-btn" aria-pressed="false">Fullscreen</button>
+      </div>
+    </div>
+
+    <div class="progress-bar" id="progress-bar" role="progressbar" aria-label="Presentation progress" aria-valuemin="1" aria-valuemax="1" aria-valuenow="1">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="slide-viewport" id="slide-viewport" tabindex="0" aria-label="Slide content">
+      <article id="slide-container" class="slide-container" aria-live="polite"></article>
+    </div>
+
+    <div id="scroll-cue" class="scroll-cue" aria-hidden="true">More below ↓</div>
+
+    <div class="presenter-nav" aria-label="Slide controls">
+      <button type="button" id="prev-btn" class="presenter-btn nav-btn" aria-label="Previous slide"><span aria-hidden="true">←</span> Previous</button>
+      <button type="button" id="next-btn" class="presenter-btn nav-btn" aria-label="Next slide">Next <span aria-hidden="true">→</span></button>
+    </div>
+  </main>
+
+  <script src="js/site-config.js"></script>
+  <script src="js/content.js"></script>
+  <script src="js/presenter.js"></script>
+</body>
+</html>

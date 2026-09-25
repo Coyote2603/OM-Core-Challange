@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "runtimeRoots": [
+    "index.html",
+    "session.html",
+    "present.html",
+    "om-challenge.html",
+    "favicon.svg",
+    "css",
+    "js",
+    "assets",
+    "vendor"
+  ],
+  "excludedDirectories": [
+    ".git",
+    "node_modules",
+    "private",
+    "restricted",
+    "course-materials",
+    "course_materials",
+    "instructor-only",
+    "instructor_only",
+    "recordings",
+    "student-data",
+    "student_data",
+    "exports",
+    "backups"
+  ],
+  "prohibitedExtensions": [
+    "pdf",
+    "doc",
+    "docx",
+    "ppt",
+    "pptx",
+    "xls",
+    "xlsx",
+    "mp4",
+    "mov",
+    "m4v",
+    "zip",
+    "7z",
+    "rar",
+    "tar",
+    "gz",
+    "key",
+    "pem",
+    "p12",
+    "pfx",
+    "sqlite",
+    "db",
+    "bak"
+  ],
+  "prohibitedRuntimeTerms": [
+    "INSEAD",
+    "POM Tutorials",
+    "Process & Operations Management",
+    "MBA Tutorial Sessions",
+    "Instant Dolls",
+    "Sport Obermeyer",
+    "Tutorial1.mp4",
+    "Tutorial2.mp4",
+    "Tutorial3.mp4",
+    "Tutorial4.mp4",
+    "Tutorial5.mp4"
+  ],
+  "prohibitedAllTextPatterns": [
+    "-----BEGIN[ A-Z0-9]*PRIVATE KEY-----",
+    "gh[pousr]_[A-Za-z0-9]{30,}",
+    "AKIA[0-9A-Z]{16}",
+    "sk-[A-Za-z0-9_-]{20,}",
+    "(?:api[_-]?key|secret|token|password|passwd|pwd)\\s*[:=]\\s*[\\\"'][^\\\"'\\s]{8,}[\\\"']"
+  ],
+  "maxFileBytes": 5000000,
+  "licensing": {
+    "code": {
+      "license": "MIT",
+      "noticeFile": "LICENSE",
+      "scope": [
+        "*.html",
+        "css/**",
+        "js/** program logic and configuration structure",
+        "scripts/**",
+        ".github/**"
+      ]
+    },
+    "demoEducationalContent": {
+      "license": "CC-BY-4.0",
+      "noticeFile": "LICENSES/CC-BY-4.0.txt",
+      "scope": [
+        "js/content.js educational expression",
+        "om-challenge.html instructional wording",
+        "js/om-challenge.js question text, hints, and worked solutions",
+        "README.md",
+        "ACKNOWLEDGMENTS.md",
+        "docs/**"
+      ]
+    },
+    "thirdParty": {
+      "noticeFile": "THIRD_PARTY_NOTICES.md",
+      "scope": [
+        "vendor/**"
+      ]
+    },
+    "excludedFromProjectLicenses": [
+      "institutional names, logos, marks, and brand assets",
+      "private or restricted course materials",
+      "third-party educational materials without an explicit compatible license",
+      "student data and student work"
+    ]
+  }
+}

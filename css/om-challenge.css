@@ -1,0 +1,306 @@
+/* om-challenge.css
+   Styling for the OM Core Challenge page. Uses the same design tokens
+   (--primary, --accent, --gray-*, --radius, --shadow) defined in
+   css/style.css, so it stays visually consistent with the rest of the
+   platform without depending on the removed css/game.css. */
+
+.game-kicker {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent-text);
+  background: var(--accent-soft);
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  margin-bottom: 0.75rem;
+}
+
+.om-hero {
+  background:
+    linear-gradient(118deg, color-mix(in srgb, var(--primary) 95%, #071923) 0%, var(--primary) 55%, color-mix(in srgb, var(--primary) 70%, #087f73) 100%);
+  color: #fff;
+  padding: 3rem 1.5rem 3.5rem;
+}
+
+.om-hero-inner {
+  max-width: 980px;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.om-hero-inner .breadcrumb {
+  color: color-mix(in srgb, #fff 70%, transparent);
+  margin-bottom: 1rem;
+}
+.om-hero-inner .breadcrumb a { color: #fff; }
+
+.om-hero-inner h1 {
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  margin: 0 0 0.75rem;
+}
+
+.om-hero-inner p {
+  max-width: 640px;
+  color: color-mix(in srgb, #fff 88%, transparent);
+  line-height: 1.55;
+}
+
+.om-hero-badge {
+  flex-shrink: 0;
+  width: 92px;
+  height: 92px;
+  border-radius: var(--radius-lg);
+  background: color-mix(in srgb, #fff 14%, transparent);
+  border: 1px solid color-mix(in srgb, #fff 28%, transparent);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+}
+.om-hero-badge span { font-size: 0.75rem; letter-spacing: 0.08em; opacity: 0.8; }
+.om-hero-badge strong { font-size: 1.3rem; }
+
+.om-container {
+  padding-top: 2.5rem;
+  padding-bottom: 4rem;
+}
+
+.om-progress-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.om-progress-track {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.om-progress-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--gray-200);
+  border: 2px solid transparent;
+}
+.om-progress-dot.om-progress-current {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+.om-progress-dot.om-progress-done {
+  background: var(--primary);
+}
+
+.om-progress-label {
+  color: var(--gray-500);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.om-question-card {
+  background: #fff;
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: 2rem clamp(1.25rem, 4vw, 2.5rem);
+}
+
+.om-question-card h2 {
+  margin: 0 0 1rem;
+  color: var(--primary);
+  font-size: 1.4rem;
+}
+
+.om-context {
+  color: var(--gray-700);
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+}
+.om-context p { margin: 0 0 0.75rem; }
+
+.context-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-size: 0.95rem;
+}
+.context-table th,
+.context-table td {
+  border: 1px solid var(--gray-200);
+  padding: 0.5rem 0.85rem;
+  text-align: left;
+}
+.context-table thead th {
+  background: var(--gray-50);
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.om-question-prompt {
+  font-weight: 700;
+  color: var(--primary);
+  margin: 0 0 1.25rem;
+  font-size: 1.05rem;
+}
+
+.om-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin-bottom: 1.25rem;
+}
+
+.om-option {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  text-align: left;
+  background: var(--gray-50);
+  border: 1.5px solid var(--gray-200);
+  border-radius: var(--radius);
+  padding: 0.8rem 1.1rem;
+  cursor: pointer;
+  font: inherit;
+  color: var(--gray-700);
+  transition: border-color 0.15s ease, background 0.15s ease, transform 0.1s ease;
+}
+.om-option:hover:not(:disabled) {
+  border-color: var(--primary);
+  background: var(--primary-soft);
+}
+.om-option:disabled { cursor: default; }
+
+.om-option-key {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #fff;
+  border: 1.5px solid var(--gray-300);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--primary);
+}
+
+.om-option-text { flex: 1; }
+
+.om-option-wrong {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  animation: om-shake 0.35s ease;
+}
+.om-option-wrong .om-option-key {
+  border-color: var(--accent);
+  color: var(--accent-text);
+}
+
+.om-option-correct {
+  border-color: #1f7a4d;
+  background: color-mix(in srgb, #1f7a4d 10%, white);
+}
+.om-option-correct .om-option-key {
+  border-color: #1f7a4d;
+  background: #1f7a4d;
+  color: #fff;
+}
+
+@keyframes om-shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
+}
+
+.om-feedback-box {
+  border-radius: var(--radius);
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.25rem;
+  line-height: 1.55;
+}
+.om-feedback-box p { margin: 0 0 0.6rem; }
+.om-feedback-box p:last-child { margin-bottom: 0; }
+
+.om-feedback-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.5rem;
+}
+
+.om-feedback-hint {
+  background: color-mix(in srgb, var(--accent) 8%, white);
+  border-left: 4px solid var(--accent);
+}
+.om-feedback-hint .om-feedback-label { color: var(--accent-text); }
+
+.om-feedback-correct {
+  background: color-mix(in srgb, #1f7a4d 8%, white);
+  border-left: 4px solid #1f7a4d;
+  color: var(--gray-700);
+}
+.om-feedback-correct .om-feedback-label { color: #1f7a4d; }
+
+.formula-block {
+  background: var(--gray-50);
+  border-left: 3px solid var(--primary);
+  padding: 0.6rem 1rem;
+  font-size: 1.05rem;
+}
+
+.om-nav-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.game-primary-btn {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 0.7rem 1.4rem;
+  border-radius: var(--radius);
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+.game-primary-btn:hover { transform: translateY(-1px); box-shadow: var(--shadow); }
+.game-primary-btn:disabled { opacity: 0.5; cursor: default; transform: none; box-shadow: none; }
+
+.game-secondary-btn {
+  background: transparent;
+  color: var(--primary);
+  border: 1.5px solid var(--gray-300);
+  padding: 0.65rem 1.3rem;
+  border-radius: var(--radius);
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+}
+.game-secondary-btn:hover:not(:disabled) { border-color: var(--primary); }
+.game-secondary-btn:disabled { opacity: 0.4; cursor: default; }
+
+@media (max-width: 640px) {
+  .om-hero-inner { flex-direction: column; }
+  .om-hero-badge { align-self: flex-start; }
+  .om-nav-row { flex-direction: column-reverse; align-items: stretch; }
+  .om-nav-row .game-primary-btn,
+  .om-nav-row .game-secondary-btn { width: 100%; text-align: center; }
+}
