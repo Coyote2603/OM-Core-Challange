@@ -192,7 +192,6 @@ input:focus-visible,
   letter-spacing: -0.01em;
 }
 
-.nav-brand::before,
 .footer-brand::before {
   width: 25px;
   height: 25px;
@@ -203,8 +202,30 @@ input:focus-visible,
   transform: rotate(-4deg);
 }
 
-.nav-brand span {
+.nav-brand span:not(.nav-logo-badge) {
   color: var(--teal-light);
+}
+
+.nav-logo-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border-radius: 8px;
+  padding: 3px 7px;
+  box-shadow: 0 1px 4px rgba(6, 25, 36, 0.25);
+}
+
+.nav-logo-img {
+  display: block;
+  height: 30px;
+  width: auto;
+}
+
+@media (max-width: 640px) {
+  .nav-logo-img {
+    height: 24px;
+  }
 }
 
 .nav-links {
