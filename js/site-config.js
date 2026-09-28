@@ -8,10 +8,10 @@
 const SITE_CONFIG = Object.freeze({
   siteTitle: "Interactive Teaching Platform",
   shortTitle: "Teaching Platform",
-  courseTitle: "OM Core: Capacity, Batching, Queueing and Process Analysis",
-  courseSubtitle: "Guided material and a worked practice set on process bottlenecks, batching trade-offs, queueing and pooling, and capacity planning under uncertainty.",
+  courseTitle: "OM Core Understanding Platform",
+  courseSubtitle: "14 worked problems on process bottlenecks, batching trade-offs, queueing and pooling, and capacity planning under uncertainty — every wrong answer gets a targeted hint, every right answer gets the full worked solution.",
   instructorName: "Your Name",
-  institutionName: "Your Institution",
+  institutionName: "Indian Institute of Management Bangalore",
   footerText: "Built for students and shared for adaptation.",
 
   theme: Object.freeze({
@@ -26,8 +26,8 @@ const SITE_CONFIG = Object.freeze({
 
   game: Object.freeze({
     title: "The OM Core Challenge",
-    description: "Six worked problems on capacity, batching, queueing, and process analysis — every wrong answer gets a targeted hint.",
+    description: "14 worked problems on capacity, batching, queueing, and process analysis — every wrong answer gets a targeted hint.",
     href: "om-challenge.html",
-    duration: "About 15 minutes"
+    duration: "About 30 minutes"
   })
 });
