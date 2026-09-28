@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#173f5f" />
-  <meta name="description" content="A reusable, zero-build platform for guided course sessions, practice problems, interactive slides, and teaching activities." />
-  <title>Interactive Teaching Platform</title>
+  <meta name="description" content="OM Core Understanding Platform — 14 worked problems on capacity, batching, queueing, and process analysis, with a targeted hint for every wrong answer." />
+  <title>OM Core Understanding Platform</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="vendor/katex/katex.min.css" />
@@ -17,7 +17,10 @@
 
   <nav class="navbar" aria-label="Primary navigation">
     <div class="nav-inner">
-      <a href="index.html" class="nav-brand" data-config="shortTitle">Teaching Platform</a>
+      <a href="index.html" class="nav-brand">
+        <span class="nav-logo-badge"><img src="assets/examples/iimb-logo.png" alt="IIM Bangalore" class="nav-logo-img" /></span>
+        <span data-config="shortTitle">Teaching Platform</span>
+      </a>
       <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Open navigation" aria-controls="nav-links" aria-expanded="false">
         <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
       </button>
@@ -30,25 +33,25 @@
     <div class="hero-orbit hero-orbit-two" aria-hidden="true"></div>
     <div class="hero-inner">
       <div class="hero-copy">
-        <span class="eyebrow light">A working public example</span>
-        <h1 data-config="courseTitle">An Interactive Teaching Platform</h1>
-        <p class="hero-lead" data-config="courseSubtitle">A public, reusable version of a platform first built for students, with guided sessions, worked examples, practice activities, interactive slides, and the OM Core Challenge.</p>
+        <span class="eyebrow light">Practice with feedback</span>
+        <h1 data-config="courseTitle">OM Core Understanding Platform</h1>
+        <p class="hero-lead" data-config="courseSubtitle">14 worked problems on process bottlenecks, batching trade-offs, queueing and pooling, and capacity planning under uncertainty — every wrong answer gets a targeted hint, every right answer gets the full worked solution.</p>
         <p class="course-meta" id="course-meta"></p>
         <div class="hero-actions">
-          <a class="btn btn-light" href="#sessions">Explore the example sessions</a>
-          <a class="btn btn-ghost-light" id="hero-game-link" href="om-challenge.html">Try the OM Core Challenge <span aria-hidden="true">→</span></a>
+          <a class="btn btn-light" href="#topics">Explore the topics</a>
+          <a class="btn btn-ghost-light" id="hero-game-link" href="om-challenge.html">Start the OM Core Challenge <span aria-hidden="true">→</span></a>
         </div>
       </div>
 
-      <aside class="hero-preview" aria-label="Platform contents">
+      <aside class="hero-preview" aria-label="How the challenge works">
         <div class="preview-window">
           <div class="preview-toolbar" aria-hidden="true"><i></i><i></i><i></i></div>
           <div class="preview-content">
-            <span class="preview-label">Session structure</span>
-            <div class="preview-row"><b>01</b><span><strong>Explain</strong><small>Concept cards and diagrams</small></span></div>
-            <div class="preview-row"><b>02</b><span><strong>Model</strong><small>Worked examples and hints</small></span></div>
-            <div class="preview-row"><b>03</b><span><strong>Practice</strong><small>Problems with revealable solutions</small></span></div>
-            <div class="preview-row"><b>04</b><span><strong>Present</strong><small>Keyboard and touch-friendly slides</small></span></div>
+            <span class="preview-label">Challenge structure</span>
+            <div class="preview-row"><b>01</b><span><strong>Read</strong><small>14 worked problems, one at a time</small></span></div>
+            <div class="preview-row"><b>02</b><span><strong>Choose</strong><small>Pick one of four options</small></span></div>
+            <div class="preview-row"><b>03</b><span><strong>Wrong pick</strong><small>Get a hint for that specific option</small></span></div>
+            <div class="preview-row"><b>04</b><span><strong>Right pick</strong><small>See the full worked solution</small></span></div>
           </div>
         </div>
       </aside>
@@ -59,34 +62,95 @@
     <section class="intro-strip" aria-labelledby="platform-intro-title">
       <div class="container intro-strip-inner">
         <div>
-          <span class="eyebrow">About this version</span>
-          <h2 id="platform-intro-title">Built for one course, shared for others to adapt.</h2>
+          <span class="eyebrow">About this platform</span>
+          <h2 id="platform-intro-title">One practice set, six core OM ideas.</h2>
         </div>
-        <p>This demonstration uses fictional content to show what the platform can do without sharing original course materials. Every component can be kept, changed, or removed to suit a different context.</p>
+        <p>Every problem below is drawn from real capacity, batching, queueing, and process-analysis scenarios. Work through them in any order, retry as often as you like, and every option you pick — right or wrong — tells you something.</p>
       </div>
     </section>
 
-    <section class="container session-section" id="sessions" aria-labelledby="session-list-title">
+    <section class="container session-section" id="topics" aria-labelledby="session-list-title">
       <div class="section-heading">
         <div>
-          <span class="eyebrow">Illustrative content</span>
-          <h2 id="session-list-title">Example sessions</h2>
+          <span class="eyebrow">What's inside</span>
+          <h2 id="session-list-title">Six core topics, 14 worked problems</h2>
         </div>
-        <p>The fictional sessions demonstrate concepts, activities, resources, problems, and presenter-ready slides. They are examples, not a suggested course structure.</p>
+        <p>Each card below is one problem in the OM Core Challenge. Open any of them to jump straight in.</p>
       </div>
-      <div class="card-grid" id="card-grid"></div>
+      <div class="card-grid" id="topics-grid">
+        <a class="session-card" href="om-challenge.html">
+          <div class="session-card-top">
+            <span class="session-card-number">01</span>
+            <span class="session-card-arrow" aria-hidden="true">↗</span>
+          </div>
+          <span class="session-card-kicker">Bottleneck &amp; flow rate</span>
+          <h3>Workload Balancing &amp; Takt Time</h3>
+          <p>A process is only as fast as its slowest step. Find the bottleneck and the maximum sustainable flow rate across activities with different worker counts.</p>
+          <div class="session-card-footer"><span>Topic 1 of 6</span><strong>Open</strong></div>
+        </a>
+        <a class="session-card" href="om-challenge.html">
+          <div class="session-card-top">
+            <span class="session-card-number">02</span>
+            <span class="session-card-arrow" aria-hidden="true">↗</span>
+          </div>
+          <span class="session-card-kicker">Batching &amp; setup capacity</span>
+          <h3>Batching and Setup Capacity</h3>
+          <p>Bigger batches cut setup time per unit but tie up capacity in changeovers. Weigh processing time against setup time to judge what's actually feasible.</p>
+          <div class="session-card-footer"><span>Topic 2 of 6</span><strong>Open</strong></div>
+        </a>
+        <a class="session-card" href="om-challenge.html">
+          <div class="session-card-top">
+            <span class="session-card-number">03</span>
+            <span class="session-card-arrow" aria-hidden="true">↗</span>
+          </div>
+          <span class="session-card-kicker">Queueing &amp; pooling</span>
+          <h3>Queueing, Variability &amp; Pooling</h3>
+          <p>Waiting time depends on more than average demand and capacity. See why pooling two queues into one usually lowers average wait, not just intuition.</p>
+          <div class="session-card-footer"><span>Topic 3 of 6</span><strong>Open</strong></div>
+        </a>
+        <a class="session-card" href="om-challenge.html">
+          <div class="session-card-top">
+            <span class="session-card-number">04</span>
+            <span class="session-card-arrow" aria-hidden="true">↗</span>
+          </div>
+          <span class="session-card-kicker">Service process capacity</span>
+          <h3>Service Process Capacity</h3>
+          <p>Parallel staff change how you compute capacity. Find the true bottleneck among four activities, each with a different number of workers.</p>
+          <div class="session-card-footer"><span>Topic 4 of 6</span><strong>Open</strong></div>
+        </a>
+        <a class="session-card" href="om-challenge.html">
+          <div class="session-card-top">
+            <span class="session-card-number">05</span>
+            <span class="session-card-arrow" aria-hidden="true">↗</span>
+          </div>
+          <span class="session-card-kicker">Capacity under uncertainty</span>
+          <h3>Capacity Under Uncertainty</h3>
+          <p>Average utilization can hide the real risk. See how a process running at 100% average utilization can still overload on an ordinary high-demand day.</p>
+          <div class="session-card-footer"><span>Topic 5 of 6</span><strong>Open</strong></div>
+        </a>
+        <a class="session-card" href="om-challenge.html">
+          <div class="session-card-top">
+            <span class="session-card-number">06</span>
+            <span class="session-card-arrow" aria-hidden="true">↗</span>
+          </div>
+          <span class="session-card-kicker">Product mix &amp; labor content</span>
+          <h3>Product Mix &amp; Labor Content</h3>
+          <p>Not all units cost the same to make. Size a workforce correctly when two product types demand very different amounts of processing time.</p>
+          <div class="session-card-footer"><span>Topic 6 of 6</span><strong>Open</strong></div>
+        </a>
+      </div>
     </section>
 
     <section class="container study-path" aria-labelledby="study-path-title">
       <div class="study-path-copy">
-        <span class="eyebrow">How this version works</span>
-        <h2 id="study-path-title">One possible student journey</h2>
-        <p>In the original platform, explanation, application, and feedback were kept together. The three steps illustrate that flow rather than prescribe it.</p>
+        <span class="eyebrow">How it works</span>
+        <h2 id="study-path-title">Every wrong answer teaches something</h2>
+        <p>Nothing is timed or auto-advanced. Try any option as many times as you need before moving on.</p>
       </div>
       <ol class="study-steps">
-        <li><span>1</span><div><strong>Concepts and objectives</strong><p>Objectives, concept cards, and the visual model introduce the topic.</p></div></li>
-        <li><span>2</span><div><strong>Examples and discussion</strong><p>Interactive slides combine examples, optional hints, and discussion prompts.</p></div></li>
-        <li><span>3</span><div><strong>Practice and feedback</strong><p>Problems include worked responses that can be revealed after an attempt.</p></div></li>
+        <li><span>1</span><div><strong>Read the scenario</strong><p>Each problem states the setup, the numbers, and the question being asked.</p></div></li>
+        <li><span>2</span><div><strong>Pick an option</strong><p>A wrong choice shows a hint aimed at exactly that misconception, not a generic nudge.</p></div></li>
+        <li><span>3</span><div><strong>Find the right one</strong><p>The correct option reveals the full worked solution, with every step shown.</p></div></li>
       </ol>
     </section>
   </main>
