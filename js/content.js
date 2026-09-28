@@ -9,8 +9,8 @@
 const SESSIONS = Object.freeze([
   {
     number: 1,
-    slug: "conceptss-and-vocabulary",
-    title: "Conceptss and Vocabulary",
+    slug: "concepts-and-vocabulary",
+    title: "Concepts and Vocabulary",
     kicker: "Build a shared language",
     summary: "Introduce a small set of reusable terms and show how they fit together before learners attempt an application.",
     objectives: [
