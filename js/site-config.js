@@ -24,10 +24,18 @@ const SITE_CONFIG = Object.freeze({
     showGame: true
   }),
 
-  game: Object.freeze({
-    title: "The OM Core Challenge",
-    description: "14 worked problems on capacity, batching, queueing, and process analysis — every wrong answer gets a targeted hint.",
-    href: "om-challenge.html",
-    duration: "About 30 minutes"
-  })
+  games: Object.freeze([
+    Object.freeze({
+      title: "The OM Core Challenge",
+      description: "14 worked problems on capacity, batching, queueing, and process analysis — every wrong answer gets a targeted hint.",
+      href: "om-challenge.html",
+      duration: "About 30 minutes"
+    }),
+    Object.freeze({
+      title: "The Newsvendor & EOQ Challenge",
+      description: "15 worked problems on inventory ordering under uncertainty — EOQ, quantity discounts, and the newsvendor model — every wrong answer gets a targeted hint.",
+      href: "newsvendor-challenge.html",
+      duration: "About 30 minutes"
+    })
+  ])
 });

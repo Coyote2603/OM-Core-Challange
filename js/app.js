@@ -10,13 +10,21 @@ const DEFAULT_SITE_CONFIG = Object.freeze({
   footerText: "Interactive Teaching Platform",
   theme: Object.freeze({ primary: "#173f5f", accent: "#e05a47", accentText: "#b43e30" }),
   features: Object.freeze({ showGame: true }),
-  game: Object.freeze({
-    title: "Interactive Game",
-    description: "Practice a course decision and learn from immediate feedback.",
-    href: "om-challenge.html",
-    duration: "Interactive activity"
-  })
+  games: Object.freeze([
+    Object.freeze({
+      title: "Interactive Game",
+      description: "Practice a course decision and learn from immediate feedback.",
+      href: "om-challenge.html",
+      duration: "Interactive activity"
+    })
+  ])
 });
+
+function getGames(config) {
+  if (Array.isArray(config.games) && config.games.length > 0) return config.games;
+  if (config.game) return [config.game];
+  return DEFAULT_SITE_CONFIG.games;
+}
 
 const mathRenderOptions = {
   delimiters: [
@@ -88,7 +96,7 @@ function applySiteConfig() {
   if (gameLink) {
     const showGame = config.features?.showGame !== false;
     gameLink.hidden = !showGame;
-    gameLink.href = config.game?.href || DEFAULT_SITE_CONFIG.game.href;
+    gameLink.href = getGames(config)[0]?.href || "om-challenge.html";
   }
 }
 
@@ -105,7 +113,6 @@ function renderNav() {
   const pageName = currentPageName();
   const currentSession = Number.parseInt(new URLSearchParams(window.location.search).get("s"), 10);
   const isHome = pageName === "index.html";
-  const isGame = pageName === "om-challenge.html";
 
   const links = [
     `<li><a href="index.html"${isHome ? ' class="active" aria-current="page"' : ""}>Home</a></li>`
@@ -117,9 +124,10 @@ function renderNav() {
   });
 
   if (config.features?.showGame !== false) {
-    const gameTitle = config.game?.title || DEFAULT_SITE_CONFIG.game.title;
-    const gameHref = config.game?.href || DEFAULT_SITE_CONFIG.game.href;
-    links.push(`<li><a href="${escapeHTML(gameHref)}" class="nav-game${isGame ? " active" : ""}"${isGame ? ' aria-current="page"' : ""}>${escapeHTML(gameTitle)}</a></li>`);
+    getGames(config).forEach(game => {
+      const isGame = pageName === game.href;
+      links.push(`<li><a href="${escapeHTML(game.href)}" class="nav-game${isGame ? " active" : ""}"${isGame ? ' aria-current="page"' : ""}>${escapeHTML(game.title)}</a></li>`);
+    });
   }
 
   navLinks.innerHTML = links.join("");
@@ -160,17 +168,18 @@ function renderDashboard() {
   }
 
   if (config.features?.showGame !== false) {
-    const game = { ...DEFAULT_SITE_CONFIG.game, ...(config.game || {}) };
-    sessionCards.push(`<a class="session-card game-card" href="${escapeHTML(game.href)}">
-      <div class="session-card-top">
-        <span class="session-card-number game-mark" aria-hidden="true">Q?</span>
-        <span class="session-card-arrow" aria-hidden="true">↗</span>
-      </div>
-      <span class="session-card-kicker">Public interactive activity</span>
-      <h3>${escapeHTML(game.title)}</h3>
-      <p>${escapeHTML(game.description)}</p>
-      <div class="session-card-footer"><span>${escapeHTML(game.duration)}</span><strong>Play now</strong></div>
-    </a>`);
+    getGames(config).forEach(game => {
+      sessionCards.push(`<a class="session-card game-card" href="${escapeHTML(game.href)}">
+        <div class="session-card-top">
+          <span class="session-card-number game-mark" aria-hidden="true">Q?</span>
+          <span class="session-card-arrow" aria-hidden="true">↗</span>
+        </div>
+        <span class="session-card-kicker">Public interactive activity</span>
+        <h3>${escapeHTML(game.title)}</h3>
+        <p>${escapeHTML(game.description)}</p>
+        <div class="session-card-footer"><span>${escapeHTML(game.duration)}</span><strong>Play now</strong></div>
+      </a>`);
+    });
   }
 
   grid.innerHTML = sessionCards.join("");
@@ -397,6 +406,7 @@ function init() {
   }
 
   if (typeof initOMChallenge === "function") initOMChallenge();
+  if (typeof initNVChallenge === "function") initNVChallenge();
 }
 
 document.addEventListener("DOMContentLoaded", init);
