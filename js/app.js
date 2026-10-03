@@ -402,6 +402,7 @@ function init() {
 
   if (typeof initOMChallenge === "function") initOMChallenge();
   if (typeof initNVChallenge === "function") initNVChallenge();
+  if (typeof initInventoryChallenge === "function") initInventoryChallenge();
 }
 
 document.addEventListener("DOMContentLoaded", init);
