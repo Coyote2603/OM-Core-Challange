@@ -1,10 +1,10 @@
-/* Tutorial session login — a simple client-side access code.
+/* Tutorial login — a simple client-side access code.
  *
  * This is NOT real security: the code below and this check are visible to
  * anyone who views the page source or opens dev tools. It only keeps casual
- * visitors out. The same code gates the OM Core Challenge, the Newsvendor
- * Challenge, and the guided tutorial sessions (see the inline guard script
- * in each of those pages' <head>, which checks the same localStorage flag).
+ * visitors out. The same code gates the OM Core Challenge and the
+ * Newsvendor Challenge (see the inline guard script in each page's <head>,
+ * which checks the same localStorage flag).
  */
 (function () {
   const TUTORIAL_PASSWORD = "OMCoreIIMB2026"; // <-- change this to the code you share with students
