@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <script>
-    // This challenge requires the tutorial access code — see js/tutorial-login.js.
+    // This challenge has its own access code — see js/tutorial-login.js.
     (function () {
       try {
-        if (localStorage.getItem("tutorial_access_granted") !== "yes") {
+        if (localStorage.getItem("newsvendor_access_granted") !== "yes") {
           location.replace("tutorial-login.html?next=" + encodeURIComponent(location.pathname + location.search));
         }
       } catch (e) { /* ignore */ }

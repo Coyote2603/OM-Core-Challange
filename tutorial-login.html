@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#173f5f" />
-  <meta name="description" content="Student access — enter the course access code to unlock the OM Core Challenge and the Newsvendor Challenge." />
+  <meta name="description" content="Student access — each challenge (OM Core, Newsvendor, Inventory Management) has its own access code." />
   <title>Tutorial Login | Interactive Teaching Platform</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="css/style.css" />
@@ -27,20 +27,7 @@
   </nav>
 
   <main id="main-content" tabindex="-1" class="tl-main">
-    <div class="tl-grid">
-      <div class="tl-login-card">
-        <span class="tl-badge">Student access</span>
-        <h1 data-config="courseTitle">Course Title</h1>
-        <p class="tl-subtitle" data-config="courseSubtitle">Guided sessions and practice activities.</p>
-        <form id="tl-form" class="tl-form" autocomplete="off">
-          <label for="tl-password" class="sr-only">Access code</label>
-          <input type="password" id="tl-password" placeholder="Enter access code" autocomplete="off" />
-          <button type="submit" class="game-primary-btn">Enter</button>
-        </form>
-        <p class="tl-error" id="tl-error" hidden>That code isn't right — check with your instructor and try again.</p>
-        <p class="tl-hint">Use the code shared through your course channel. It unlocks the OM Core Challenge and the Newsvendor Challenge.</p>
-      </div>
-    </div>
+    <div class="tl-grid" id="tl-grid"></div>
   </main>
 
   <footer class="footer">

@@ -6,7 +6,7 @@
     // This challenge has its own access code — see js/tutorial-login.js.
     (function () {
       try {
-        if (localStorage.getItem("om_core_access_granted") !== "yes") {
+        if (localStorage.getItem("inventory_access_granted") !== "yes") {
           location.replace("tutorial-login.html?next=" + encodeURIComponent(location.pathname + location.search));
         }
       } catch (e) { /* ignore */ }
@@ -14,8 +14,8 @@
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#173f5f" />
-  <meta name="description" content="14 worked multiple-choice problems on capacity, batching, queueing, and process analysis, with a targeted hint for every wrong answer." />
-  <title>The OM Core Challenge | Interactive Teaching Platform</title>
+  <meta name="description" content="Worked multiple-choice problems on inventory management, starting with the newsvendor model and EOQ, with a targeted hint for every wrong answer." />
+  <title>The Inventory Management Challenge | Interactive Teaching Platform</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/om-challenge.css" />
@@ -42,26 +42,26 @@
       <div class="om-hero-inner">
         <div>
           <div class="breadcrumb"><a href="index.html">Home</a> &rsaquo; Interactive activity</div>
-          <span class="game-kicker">Capacity, batching, queueing, process analysis</span>
-          <h1>The OM Core Challenge</h1>
-          <p>14 worked problems on process capacity and flow. Pick an answer — if it's wrong, you get a hint aimed at exactly that mistake, and you can try again. Get it right and the full worked solution unlocks.</p>
+          <span class="game-kicker">Newsvendor, EOQ, and more to come</span>
+          <h1>The Inventory Management Challenge</h1>
+          <p>Worked problems on inventory decisions, starting with the newsvendor model and the economic order quantity. Pick an answer — if it's wrong, you get a hint aimed at exactly that mistake, and you can try again. Get it right and the full worked solution unlocks.</p>
         </div>
         <div class="om-hero-badge" aria-hidden="true">
           <span>Q</span>
-          <strong>1&ndash;14</strong>
+          <strong id="inv-hero-count">&ndash;</strong>
         </div>
       </div>
     </header>
 
     <main class="om-container container" id="main-content" tabindex="-1">
-      <div id="om-live" class="sr-only" aria-live="polite"></div>
+      <div id="inv-live" class="sr-only" aria-live="polite"></div>
 
       <div class="om-progress-row">
-        <div class="om-progress-track" id="om-progress-track"></div>
-        <span class="om-progress-label" id="om-progress-label">Question 1 of 6</span>
+        <div class="om-progress-track" id="inv-progress-track"></div>
+        <span class="om-progress-label" id="inv-progress-label">Question 1</span>
       </div>
 
-      <section class="om-question-card" id="om-question-panel" aria-live="polite"></section>
+      <section class="om-question-card" id="inv-question-panel" aria-live="polite"></section>
     </main>
 
     <footer class="footer">
@@ -76,6 +76,13 @@
   <script src="js/content.js"></script>
   <script src="js/app.js"></script>
   <script src="js/analytics.js"></script>
-  <script src="js/om-challenge.js"></script>
+  <script src="js/inventory-challenge.js"></script>
+  <script>
+    (function () {
+      var count = typeof INVENTORY_CHALLENGE_QUESTIONS !== "undefined" ? INVENTORY_CHALLENGE_QUESTIONS.length : 0;
+      var badge = document.getElementById("inv-hero-count");
+      if (badge) badge.textContent = count > 0 ? "1–" + count : "Soon";
+    })();
+  </script>
 </body>
 </html>
