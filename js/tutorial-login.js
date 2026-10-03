@@ -7,7 +7,7 @@
  * check this code.
  */
 (function () {
-  const TUTORIAL_PASSWORD = "pom2026"; // <-- change this to the code you share with students
+  const TUTORIAL_PASSWORD = "OMCoreIIMB2026"; // <-- change this to the code you share with students
   const STORAGE_KEY = "tutorial_access_granted";
 
   const form = document.getElementById("tl-form");
