@@ -260,6 +260,18 @@ input:focus-visible,
   color: var(--white);
 }
 
+.nav-links a.nav-login {
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  font-weight: 600;
+}
+.nav-links a.nav-login:hover,
+.nav-links a.nav-login.active {
+  color: var(--white);
+  background: transparent;
+}
+
 .nav-toggle {
   width: 42px;
   height: 42px;

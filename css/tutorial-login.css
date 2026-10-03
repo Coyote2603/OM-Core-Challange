@@ -1,0 +1,98 @@
+/* Tutorial login page — split layout: password card + public-activity teaser. */
+
+.tl-main { padding: 0; }
+
+.tl-grid {
+  display: grid;
+  grid-template-columns: minmax(300px, 420px) 1fr;
+  min-height: calc(100vh - 140px);
+}
+@media (max-width: 820px) {
+  .tl-grid { grid-template-columns: 1fr; min-height: auto; }
+}
+
+.tl-login-card {
+  background: var(--white);
+  padding: 3rem 2.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.9rem;
+}
+
+.tl-brand { margin-bottom: 1.5rem; }
+
+.tl-badge {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background: var(--gray-100);
+  color: var(--gray-700);
+  border-radius: 999px;
+  padding: 0.3rem 0.75rem;
+  margin-bottom: 0.3rem;
+}
+
+.tl-login-card h1 { font-size: clamp(1.4rem, 2.4vw, 1.8rem); color: var(--ink); margin: 0.1rem 0 0.2rem; }
+.tl-subtitle { color: var(--gray-500); margin-bottom: 1.2rem; }
+
+.tl-form { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+.tl-form input[type="password"] {
+  flex: 1;
+  min-width: 180px;
+  padding: 0.65rem 0.9rem;
+  border: 1.5px solid var(--gray-200);
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+}
+.tl-form input[type="password"]:focus { outline: none; border-color: var(--primary); }
+
+.tl-error { color: var(--accent-text); font-size: 0.88rem; margin-top: 0.5rem; }
+.tl-hint { color: var(--gray-500); font-size: 0.85rem; margin-top: 0.8rem; }
+
+.tl-public-panel {
+  background: linear-gradient(160deg, var(--primary-deep), color-mix(in srgb, var(--primary) 70%, var(--teal)));
+  color: var(--white);
+  padding: 3rem 2.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.1rem;
+}
+
+.tl-public-tag {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background: rgba(255,255,255,0.14);
+  border-radius: 999px;
+  padding: 0.3rem 0.75rem;
+}
+
+.tl-public-panel h2 { font-size: clamp(1.4rem, 2.6vw, 2rem); margin: 0; }
+.tl-public-panel > p { color: rgba(255,255,255,0.78); max-width: 48ch; }
+
+.tl-public-cards { display: flex; flex-direction: column; gap: 0.85rem; margin-top: 0.5rem; }
+
+.tl-public-card {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.16);
+  border-radius: var(--radius);
+  padding: 1rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  text-decoration: none;
+  color: var(--white);
+  transition: background 0.15s ease;
+}
+.tl-public-card:hover { background: rgba(255,255,255,0.15); }
+.tl-public-card strong { font-size: 1.05rem; }
+.tl-public-card span:not(.tl-public-link) { color: rgba(255,255,255,0.75); font-size: 0.88rem; }
+.tl-public-link { color: var(--teal-light); font-weight: 700; font-size: 0.85rem; }
