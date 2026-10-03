@@ -274,3 +274,89 @@
 .nv-summary-cell span { display: block; font-size: 0.72rem; text-transform: uppercase; color: var(--gray-500); margin-bottom: 0.2rem; }
 .nv-summary-cell strong { font-size: 1.3rem; color: var(--ink); }
 .nv-summary-note { color: var(--gray-500); font-size: 0.88rem; text-align: left; background: var(--gray-50); border-radius: var(--radius-sm); padding: 0.8rem 1rem; margin-bottom: 1.3rem; }
+
+/* ---- Rich end-of-game summary ("Your policy, explained") ---- */
+
+.nv-summary-card.nv-summary-wide {
+  max-width: 960px;
+  text-align: left;
+}
+.nv-summary-wide h2 { text-align: left; }
+
+.nv-summary-lede {
+  color: var(--gray-700);
+  font-size: 0.98rem;
+  line-height: 1.6;
+  margin: 0.4rem 0 1.4rem;
+  text-align: left;
+}
+
+.nv-summary-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.9rem;
+  margin: 0 0 1rem;
+}
+@media (max-width: 720px) { .nv-summary-stat-grid { grid-template-columns: 1fr; } }
+
+.nv-summary-wide .nv-summary-cell { text-align: left; }
+.nv-summary-wide .nv-summary-cell small {
+  display: block;
+  color: var(--gray-500);
+  font-size: 0.78rem;
+  margin-top: 0.35rem;
+  line-height: 1.4;
+}
+.nv-summary-cell.nv-summary-cell-highlight {
+  background: var(--accent-soft);
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, var(--gray-200));
+}
+.nv-summary-cell.nv-summary-cell-highlight span { color: var(--accent-text); }
+.nv-summary-cell.nv-summary-cell-highlight strong { color: var(--accent-text); }
+.nv-summary-cell.nv-summary-cell-highlight small { color: color-mix(in srgb, var(--accent-text) 70%, var(--gray-500)); }
+
+.nv-summary-columns {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 1.75rem;
+  margin: 1.5rem 0 1.75rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--gray-200);
+}
+@media (max-width: 820px) { .nv-summary-columns { grid-template-columns: 1fr; } }
+
+.nv-summary-explain h3,
+.nv-summary-teaches h3 { margin: 0.3rem 0 0.9rem; color: var(--ink); font-size: 1.1rem; }
+
+.nv-summary-steps {
+  list-style: none;
+  margin: 0 0 1.1rem;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.nv-summary-steps li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  font-size: 0.9rem;
+  color: var(--gray-700);
+  background: var(--gray-50);
+  border-radius: var(--radius-sm);
+  padding: 0.55rem 0.7rem;
+}
+.nv-summary-steps .nv-step-num { margin-top: 0.05rem; }
+
+.nv-summary-teaches ul {
+  margin: 0;
+  padding-left: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.nv-summary-teaches li { color: var(--gray-700); font-size: 0.9rem; line-height: 1.5; }
+
+.nv-recap-correct { color: #1f7a4d; font-weight: 700; }
+
+.nv-summary-wide .game-secondary-btn { margin-top: 0.5rem; }
