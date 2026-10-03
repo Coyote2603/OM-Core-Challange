@@ -19,8 +19,8 @@
   try {
     if (localStorage.getItem(STORAGE_KEY) === "yes") {
       const params = new URLSearchParams(window.location.search);
-      const next = params.get("next");
-      if (next) window.location.replace(next);
+      const next = params.get("next") || "index.html";
+      window.location.replace(next);
     }
   } catch (err) { /* ignore */ }
 
@@ -29,7 +29,7 @@
     if (input.value.trim().toLowerCase() === TUTORIAL_PASSWORD.toLowerCase()) {
       try { localStorage.setItem(STORAGE_KEY, "yes"); } catch (err) { /* private browsing, etc. */ }
       const params = new URLSearchParams(window.location.search);
-      const next = params.get("next") || "session.html?s=1";
+      const next = params.get("next") || "index.html";
       window.location.href = next;
     } else {
       error.hidden = false;
