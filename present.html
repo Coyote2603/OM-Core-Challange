@@ -2,6 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <script>
+    // Presenter mode shows session content, so it requires the same access code.
+    (function () {
+      try {
+        if (localStorage.getItem("tutorial_access_granted") !== "yes") {
+          location.replace("tutorial-login.html?next=" + encodeURIComponent(location.pathname + location.search));
+        }
+      } catch (e) { /* ignore */ }
+    })();
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#101c2b" />
   <meta name="description" content="Interactive, keyboard-friendly presenter mode for a teaching session." />
