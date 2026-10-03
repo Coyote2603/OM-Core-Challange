@@ -32,10 +32,10 @@ const SITE_CONFIG = Object.freeze({
       duration: "About 30 minutes"
     }),
     Object.freeze({
-      title: "The Newsvendor & EOQ Challenge",
-      description: "15 worked problems on inventory ordering under uncertainty — EOQ, quantity discounts, and the newsvendor model — every wrong answer gets a targeted hint.",
+      title: "The Newsvendor Challenge",
+      description: "An 8-round simulation — commit to an order quantity before demand is known, then compare your profit against the optimal policy on that same realized demand.",
       href: "newsvendor-challenge.html",
-      duration: "About 30 minutes"
+      duration: "About 10 minutes"
     })
   ])
 });
