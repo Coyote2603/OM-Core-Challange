@@ -123,6 +123,8 @@ function renderNav() {
     links.push(`<li><a href="session.html?s=${item.number}"${active ? ' class="active" aria-current="page"' : ""} aria-label="Session ${item.number}: ${escapeHTML(item.title)}">S${item.number}</a></li>`);
   });
 
+  links.push(`<li><a href="tutorial-login.html" class="nav-login${pageName === "tutorial-login.html" ? " active" : ""}">Tutorial login</a></li>`);
+
   if (config.features?.showGame !== false) {
     getGames(config).forEach(game => {
       const isGame = pageName === game.href;
