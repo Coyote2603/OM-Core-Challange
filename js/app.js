@@ -176,7 +176,7 @@ function renderDashboard() {
           <span class="session-card-number game-mark" aria-hidden="true">Q?</span>
           <span class="session-card-arrow" aria-hidden="true">↗</span>
         </div>
-        <span class="session-card-kicker">Public interactive activity</span>
+        <span class="session-card-kicker">Code required</span>
         <h3>${escapeHTML(game.title)}</h3>
         <p>${escapeHTML(game.description)}</p>
         <div class="session-card-footer"><span>${escapeHTML(game.duration)}</span><strong>Play now</strong></div>
