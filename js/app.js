@@ -108,20 +108,13 @@ function renderNav() {
   const navLinks = document.getElementById("nav-links");
   if (!navLinks) return;
 
-  const sessions = getSessions();
   const config = getSiteConfig();
   const pageName = currentPageName();
-  const currentSession = Number.parseInt(new URLSearchParams(window.location.search).get("s"), 10);
   const isHome = pageName === "index.html";
 
   const links = [
     `<li><a href="index.html"${isHome ? ' class="active" aria-current="page"' : ""}>Home</a></li>`
   ];
-
-  sessions.forEach(item => {
-    const active = pageName === "session.html" && item.number === currentSession;
-    links.push(`<li><a href="session.html?s=${item.number}"${active ? ' class="active" aria-current="page"' : ""} aria-label="Session ${item.number}: ${escapeHTML(item.title)}">S${item.number}</a></li>`);
-  });
 
   links.push(`<li><a href="tutorial-login.html" class="nav-login${pageName === "tutorial-login.html" ? " active" : ""}">Tutorial login</a></li>`);
 
