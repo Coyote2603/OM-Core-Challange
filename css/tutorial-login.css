@@ -56,3 +56,32 @@
 
 .tl-error { color: var(--accent-text); font-size: 0.88rem; margin-top: 0.5rem; }
 .tl-hint { color: var(--gray-500); font-size: 0.85rem; margin-top: 0.8rem; }
+
+.tl-switch { font-size: 0.85rem; margin-top: 0.4rem; }
+.tl-switch a { color: var(--teal); font-weight: 600; text-decoration: none; }
+.tl-switch a:hover { text-decoration: underline; }
+
+/* ---- Chooser state (no specific challenge requested) ---- */
+
+.tl-chooser-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin-top: 0.5rem;
+}
+
+.tl-chooser-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.85rem 1.1rem;
+  border: 1.5px solid var(--gray-200);
+  border-radius: var(--radius-sm);
+  color: var(--ink);
+  font-weight: 600;
+  text-decoration: none;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+.tl-chooser-item:hover { border-color: var(--primary); background: var(--gray-50); }
+.tl-chooser-item span { color: var(--teal); }
