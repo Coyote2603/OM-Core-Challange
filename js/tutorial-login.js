@@ -2,9 +2,9 @@
  *
  * This is NOT real security: the code below and this check are visible to
  * anyone who views the page source or opens dev tools. It only keeps casual
- * visitors from wandering into the guided tutorial sessions. The two
- * interactive challenges (OM Core, Newsvendor) are never gated and never
- * check this code.
+ * visitors out. The same code gates the OM Core Challenge, the Newsvendor
+ * Challenge, and the guided tutorial sessions (see the inline guard script
+ * in each of those pages' <head>, which checks the same localStorage flag).
  */
 (function () {
   const TUTORIAL_PASSWORD = "OMCoreIIMB2026"; // <-- change this to the code you share with students
