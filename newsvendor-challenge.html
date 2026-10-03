@@ -4,11 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#173f5f" />
-  <meta name="description" content="15 worked multiple-choice problems on EOQ and the newsvendor model, with a targeted hint for every wrong answer." />
-  <title>The Newsvendor &amp; EOQ Challenge | Interactive Teaching Platform</title>
+  <meta name="description" content="An 8-round newsvendor simulation — commit to an order quantity before demand is known, then see your profit against the optimal policy on the same realized demand." />
+  <title>The Newsvendor Challenge | Interactive Teaching Platform</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/om-challenge.css" />
+  <link rel="stylesheet" href="css/newsvendor-sim.css" />
   <link rel="stylesheet" href="vendor/katex/katex.min.css" />
   <script defer src="vendor/katex/katex.min.js"></script>
   <script defer src="vendor/katex/auto-render.min.js"></script>
@@ -32,26 +33,71 @@
       <div class="om-hero-inner">
         <div>
           <div class="breadcrumb"><a href="index.html">Home</a> &rsaquo; Interactive activity</div>
-          <span class="game-kicker">EOQ, quantity discounts, the newsvendor model</span>
-          <h1>The Newsvendor &amp; EOQ Challenge</h1>
-          <p>15 worked problems on ordering under uncertainty. Pick an answer — if it's wrong, you get a hint aimed at exactly that mistake, and you can try again. Get it right and the full worked solution unlocks.</p>
+          <span class="game-kicker">Commit before demand is known</span>
+          <h1>The Newsvendor Challenge</h1>
+          <p>Run a campus newsstand through eight changing mornings. Choose how many copies to order before demand is known, then judge your decision against Q* &mdash; the optimal order &mdash; on that same morning's actual demand.</p>
         </div>
         <div class="om-hero-badge" aria-hidden="true">
           <span>Q</span>
-          <strong>1&ndash;15</strong>
+          <strong>1&ndash;8</strong>
         </div>
       </div>
     </header>
 
     <main class="om-container container" id="main-content" tabindex="-1">
-      <div id="nv-live" class="sr-only" aria-live="polite"></div>
 
-      <div class="om-progress-row">
-        <div class="om-progress-track" id="nv-progress-track"></div>
-        <span class="om-progress-label" id="nv-progress-label">Question 1 of 15</span>
-      </div>
+      <section id="nv-intro" class="nv-intro">
+        <div class="nv-intro-block">
+          <span class="eyebrow">Your role</span>
+          <h2>Order today. Learn demand tomorrow.</h2>
+          <p>You run a newsstand at the campus gate. Every morning brings either a normal day or a change in demand, uncertainty, or unit economics. Decide how many copies to order before that morning's demand is revealed, then see which input actually moved the optimal quantity.</p>
+        </div>
+        <div class="nv-steps">
+          <div class="nv-step"><span class="nv-step-num">1</span><div><strong>Spot the change</strong><p>Compare the morning's numbers with the baseline.</p></div></div>
+          <div class="nv-step"><span class="nv-step-num">2</span><div><strong>Predict, then order</strong><p>Call the direction of Q* first, then commit a quantity.</p></div></div>
+          <div class="nv-step"><span class="nv-step-num">3</span><div><strong>Check the mechanism</strong><p>See the critical ratio behind the answer, not just whether you were right.</p></div></div>
+        </div>
+        <div class="nv-intro-panel">
+          <div class="nv-intro-panel-copy">
+            <span class="eyebrow">The eight-morning run</span>
+            <h3>What changes, morning to morning</h3>
+            <p>After the baseline, five mornings each change exactly one input &mdash; mean demand, uncertainty, selling price, unit cost, or salvage value. The seventh combines two changes pulling in opposite directions. The eighth is a capstone: everything moves at once.</p>
+            <p class="nv-mission"><strong>Your mission:</strong> maximize total profit across all eight mornings. After each one, your choice is compared with that morning's Q* on the exact same realized demand &mdash; not on average, on that draw.</p>
+          </div>
+          <div class="nv-intro-dials">
+            <div class="nv-dial"><strong>&mu;</strong><span>Mean demand</span><small>moves the center</small></div>
+            <div class="nv-dial"><strong>&sigma;</strong><span>Uncertainty</span><small>scales the buffer</small></div>
+            <div class="nv-dial"><strong>C<sub>u</sub>/C<sub>o</sub></strong><span>Unit economics</span><small>sets the target percentile</small></div>
+          </div>
+        </div>
+        <div class="nv-intro-footer">
+          <p><strong>Time:</strong> about 10 minutes. No calculator required &mdash; the slider does the arithmetic; you supply the reasoning.</p>
+          <button type="button" class="game-primary-btn" id="nv-start-btn">Start the challenge <span aria-hidden="true">&rarr;</span></button>
+        </div>
+      </section>
 
-      <section class="om-question-card" id="nv-question-panel" aria-live="polite"></section>
+      <section id="nv-game" class="nv-game" hidden>
+        <div class="nv-stats-bar" id="nv-stats-bar"></div>
+        <div class="nv-game-grid">
+          <div class="nv-round-card" id="nv-round-panel"></div>
+          <div class="nv-result-card" id="nv-result-panel">
+            <p class="nv-result-placeholder">Commit an order to see this morning's demand and outcome.</p>
+          </div>
+        </div>
+        <div class="nv-log-section" id="nv-log-section" hidden>
+          <span class="eyebrow">Decision log</span>
+          <h3>Your mornings so far</h3>
+          <div class="nv-log-table-wrap">
+            <table class="nv-log-table">
+              <thead><tr><th>Morning</th><th>Market brief</th><th>Order Q</th><th>Demand</th><th>Outcome</th><th>Profit</th></tr></thead>
+              <tbody id="nv-log-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section id="nv-summary" class="nv-summary" hidden></section>
+
     </main>
 
     <footer class="footer">
@@ -65,6 +111,7 @@
   <script src="js/site-config.js"></script>
   <script src="js/content.js"></script>
   <script src="js/app.js"></script>
+  <script src="js/analytics.js"></script>
   <script src="js/newsvendor-challenge.js"></script>
 </body>
 </html>
