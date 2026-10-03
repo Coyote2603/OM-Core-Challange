@@ -10,7 +10,7 @@ const SITE_CONFIG = Object.freeze({
   shortTitle: "Teaching Platform",
   courseTitle: "OM Core Understanding Platform",
   courseSubtitle: "14 worked problems on process bottlenecks, batching trade-offs, queueing and pooling, and capacity planning under uncertainty — every wrong answer gets a targeted hint, every right answer gets the full worked solution.",
-  instructorName: "Your Name",
+  instructorName: "Shalique MS",
   institutionName: "Indian Institute of Management Bangalore",
   footerText: "Built for students and shared for adaptation.",
 
