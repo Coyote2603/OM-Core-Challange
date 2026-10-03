@@ -271,6 +271,7 @@ function nvCommitOrder(round, qStar) {
   const demand = Math.max(0, Math.round(nvRandNormal(round.mean, round.std)));
   const { sales, leftover, lost, profit } = nvProfitAt(round, Q, demand);
   const qsOutcome = nvProfitAt(round, qStar, demand);
+  const meanPolicyProfit = nvProfitAt(round, Math.round(round.mean), demand).profit;
   const gap = profit - qsOutcome.profit;
 
   nvCumProfit += profit;
@@ -280,13 +281,24 @@ function nvCommitOrder(round, qStar) {
   const wasRight = nvUserChoice === correctAnswer;
   if (wasRight) nvCorrectCount++;
 
+  const { cu, co, ratio } = nvComputeQStar(round);
+
   nvLog.push({
     morning: round.id,
     title: round.title,
+    mean: round.mean,
+    std: round.std,
+    ratio,
     orderQ: Q,
+    qStar,
     demand,
     outcome: leftover > 0 ? `${leftover} leftover` : lost > 0 ? `${lost} lost sales` : "Sold out exactly",
-    profit
+    profit,
+    qStarProfit: qsOutcome.profit,
+    meanPolicyProfit,
+    predicted: nvUserChoice,
+    correctAnswer,
+    wasRight
   });
 
   if (typeof window.logChallengeEvent === "function") {
@@ -405,23 +417,92 @@ function nvRenderSummary() {
   if (!summary) return;
   summary.hidden = false;
 
+  const totalQStarProfit = nvLog.reduce((sum, r) => sum + r.qStarProfit, 0);
+  const totalMeanProfit = nvLog.reduce((sum, r) => sum + r.meanPolicyProfit, 0);
+  const avgDistance = nvLog.reduce((sum, r) => sum + Math.abs(r.orderQ - r.qStar), 0) / nvLog.length;
+  const belowCount = nvLog.filter(r => r.orderQ < r.qStar).length;
+  const aboveCount = nvLog.filter(r => r.orderQ > r.qStar).length;
+  const tendency = belowCount > aboveCount ? "below" : aboveCount > belowCount ? "above" : "evenly split around";
+  const tip = belowCount > aboveCount
+    ? "Recheck how a high underage cost or salvage value pushes the target percentile upward — that's usually why Q* sits further above the mean than your orders did."
+    : aboveCount > belowCount
+      ? "Recheck how a high overage cost pulls the target percentile downward — that's usually why Q* sits closer to or below the mean than your orders did."
+      : "Your orders didn't lean consistently to either side of Q*, which is a good sign you were reasoning about each morning on its own terms rather than anchoring on one habit.";
+
   if (typeof window.logChallengeEvent === "function") {
     window.logChallengeEvent({
       challenge: "newsvendor-sim", event_type: "complete",
-      total_profit: nvCumProfit, total_gap: nvCumGap, predictions_correct: nvCorrectCount
+      total_profit: nvCumProfit, total_gap: nvCumGap, predictions_correct: nvCorrectCount,
+      avg_distance_from_qstar: avgDistance
     });
   }
 
+  const recapRows = nvLog.map(r => `
+    <tr>
+      <td>${r.title}</td>
+      <td>${r.mean}</td>
+      <td>${r.std}</td>
+      <td>${r.ratio.toFixed(2)}</td>
+      <td>${r.wasRight ? `<span class="nv-recap-correct">&check; ${r.predicted}</span>` : `${r.predicted} &rarr; ${r.correctAnswer}`}</td>
+      <td>${r.orderQ}</td>
+      <td><strong>${r.qStar}</strong></td>
+    </tr>
+  `).join("");
+
   summary.innerHTML = `
-    <div class="nv-summary-card">
-      <span class="game-kicker">Challenge complete</span>
-      <h2>Eight mornings down</h2>
-      <div class="nv-summary-grid">
-        <div class="nv-summary-cell"><span>Total profit</span><strong>${nvFmtMoney(nvCumProfit)}</strong></div>
-        <div class="nv-summary-cell"><span>Gap vs Q*</span><strong>${nvCumGap >= 0 ? "+" : ""}${nvFmtMoney(nvCumGap)}</strong></div>
-        <div class="nv-summary-cell"><span>Predictions correct</span><strong>${nvCorrectCount} / ${NV_ROUNDS.length}</strong></div>
+    <div class="nv-summary-card nv-summary-wide">
+      <span class="game-kicker">Eight mornings complete</span>
+      <h2>Your policy, explained</h2>
+      <p class="nv-summary-lede">
+        Your orders averaged ${avgDistance.toFixed(1)} units from Q* and landed more often ${tendency} the changing targets.
+        ${tip} You correctly called the direction of Q* on ${nvCorrectCount} of ${NV_ROUNDS.length} mornings before choosing a quantity.
+        On these same eight demand draws, the adaptive Q* policy would have earned ${nvFmtMoney(Math.abs(totalQStarProfit - nvCumProfit))}
+        ${totalQStarProfit >= nvCumProfit ? "more" : "less"} than you did &mdash; comparing both policies on the identical realized demand keeps that benchmark fair.
+      </p>
+      <div class="nv-summary-stat-grid">
+        <div class="nv-summary-cell nv-summary-cell-highlight">
+          <span>Your total profit</span><strong>${nvFmtMoney(nvCumProfit)}</strong>
+          <small>Avg ${avgDistance.toFixed(1)} units from Q* &middot; ${nvCorrectCount}/${NV_ROUNDS.length} predictions correct</small>
+        </div>
+        <div class="nv-summary-cell">
+          <span>Adaptive Q* policy</span><strong>${nvFmtMoney(totalQStarProfit)}</strong>
+          <small>Uses that morning's optimal order</small>
+        </div>
+        <div class="nv-summary-cell">
+          <span>Mean-demand policy</span><strong>${nvFmtMoney(totalMeanProfit)}</strong>
+          <small>Always orders that morning's forecast mean</small>
+        </div>
       </div>
-      <p class="nv-summary-note">Your profit gap reflects one random demand draw per morning, so it's partly luck — Q* is only optimal on average, not on every single realization. Your prediction score is the better read on whether you've internalized how mean demand, uncertainty, and the critical ratio each move Q*.</p>
+      <p class="nv-summary-note">Replaying with different choices changes the random demand draws too, so compare your distance from Q* and your prediction score across attempts &mdash; not raw profit totals.</p>
+      <div class="nv-summary-columns">
+        <div class="nv-summary-explain">
+          <span class="eyebrow">The mechanism</span>
+          <h3>Why Q* moved, morning to morning</h3>
+          <ol class="nv-summary-steps">
+            <li><span class="nv-step-num">1</span>C<sub>u</sub> = sell &minus; cost</li>
+            <li><span class="nv-step-num">2</span>C<sub>o</sub> = cost &minus; salvage</li>
+            <li><span class="nv-step-num">3</span>Critical ratio = C<sub>u</sub>/(C<sub>u</sub>+C<sub>o</sub>) sets the target percentile</li>
+            <li><span class="nv-step-num">4</span>Q* = mean + z(ratio) &times; std. deviation combines the forecast, the economics, and the uncertainty</li>
+          </ol>
+          <div class="nv-log-table-wrap">
+            <table class="nv-log-table">
+              <thead><tr><th>Morning</th><th>&mu;</th><th>&sigma;</th><th>CR</th><th>Prediction</th><th>Your Q</th><th>Q*</th></tr></thead>
+              <tbody>${recapRows}</tbody>
+            </table>
+          </div>
+        </div>
+        <div class="nv-summary-teaches">
+          <span class="eyebrow">What this run teaches</span>
+          <h3>Optimize the policy, not yesterday</h3>
+          <ul>
+            <li>The best order quantity still produces leftovers on some mornings and lost sales on others &mdash; that's expected, not a sign Q* was wrong.</li>
+            <li>Mean demand moves where Q* is centered; it doesn't by itself decide which side of the mean Q* lands on.</li>
+            <li>The critical ratio, not intuition, decides whether Q* sits above or below the mean.</li>
+            <li>A larger standard deviation stretches the gap between the mean and Q* &mdash; it doesn't change which direction that gap points.</li>
+            <li>Q* is optimal on average across many mornings. It can still lose to a different quantity on any single lucky or unlucky draw.</li>
+          </ul>
+        </div>
+      </div>
       <button type="button" class="game-secondary-btn" id="nv-restart-btn">Play again</button>
     </div>
   `;
